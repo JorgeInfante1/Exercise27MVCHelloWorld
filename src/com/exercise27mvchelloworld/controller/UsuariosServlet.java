@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.exerecise27mvchelloworld.model.UserModel;
+
 
 @WebServlet("/UsuariosServlet")
 public class UsuariosServlet extends HttpServlet {
@@ -22,13 +24,22 @@ public class UsuariosServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//response.getWriter().append("Hello World");
 		
+				
 		String sid="";
+		int iid=0;
 		String sname="";
 		String sage="";
+		short shage=0;
+		
+		
 		
 		sid = request.getParameter("txtId");
+		iid = Integer.parseInt(sid);
 		sname = request.getParameter("txtName");
 		sage = request.getParameter("txtAge");
+		shage = Short.parseShort(sage);
+		
+		UserModel myUser = new UserModel(iid, sname, shage);
 		
 		response.getWriter().append("The id input is: "+sid);
 		response.getWriter().append("The name input is: "+sname);
